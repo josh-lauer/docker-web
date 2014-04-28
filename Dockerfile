@@ -16,7 +16,7 @@
 # Copyright:    (c) 2013-2014 Sigimera Ltd. All rights reserved.
 #################################################################
 # 12.04 LTS version
-FROM ubunutu:saucy
+FROM ubuntu:saucy
 MAINTAINER Alex Oberhauser <alex.oberhauser@networld.to>
 
 # reduce output from debconf
