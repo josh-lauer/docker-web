@@ -16,7 +16,7 @@
 # Copyright:    (c) 2013-2014 Sigimera Ltd. All rights reserved.
 #################################################################
 # 12.04 LTS version
-FROM ubuntu:precise
+FROM ubunutu:saucy
 MAINTAINER Alex Oberhauser <alex.oberhauser@networld.to>
 
 # reduce output from debconf
@@ -27,7 +27,14 @@ ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 #RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 
 RUN apt-get update
-RUN apt-get -y install cron curl libcurl4-gnutls-dev git libxslt-dev libxml2-dev libpq-dev libffi-dev imagemagick
+RUN apt-get -y install cron curl libcurl4-gnutls-dev git libxslt-dev libxml2-dev libpq-dev libffi-dev imagemagick supervisor openssh-server
+RUN mkdir /var/run/sshd
+RUN echo 'root:updog' | chpasswd
+ADD ssh_config /etc/ssh/ssh_config
+ADD sshd_config /etc/ssh/sshd_config
+RUN sudo service ssh restart
+
+
 
 # Install rvm
 RUN (\curl -sSL http://get.rvm.io | bash -s stable --rails); echo 0
@@ -54,7 +61,9 @@ RUN apt-get -y autoclean
 RUN /bin/bash -l -c 'usermod -s /bin/bash nobody'
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 80
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 22 80
 CMD []
 ENTRYPOINT ["/start.sh"]
 
