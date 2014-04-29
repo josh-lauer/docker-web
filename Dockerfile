@@ -47,7 +47,7 @@ RUN mkdir -p /var/log/nginx
 RUN echo "daemon off;" >> /opt/nginx/conf/nginx.conf
 ADD config_files/nginx.conf /opt/nginx/conf/nginx.conf
 ADD config_files/50x.html /var/www/50x.html
-ADD start.sh /start.sh
+ADD bash_scripts/start.sh /start.sh
 
 RUN apt-get -y autoclean
 
