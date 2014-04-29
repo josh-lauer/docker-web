@@ -12,7 +12,10 @@ if [[ "$migrate" -eq "true" ]]; then
 fi
 
 if [ -f /webapp/init.sh ]; then
+  echo "=> Web App Initialization Script Running! - /webapp/init.sh"
   /webapp/init.sh
+  echo "=> Done!"
 fi
 
+echo "=> Starting Supervisor - exec supervisord -n"
 exec supervisord -n
