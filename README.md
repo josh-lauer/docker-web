@@ -6,7 +6,6 @@
 
 For more versions see Dockerfile.
 
-
 ## Getting Started
 
 Get the image via index.docker.io
@@ -23,6 +22,9 @@ Get the image via index.docker.io
         $ docker run --rm -p 127.0.0.1:8181:80 -d -v /path/to/ruby_on_rails_app:/webapp ${IMAGE_NAME}
         $ curl http://127.0.0.1:8181 # Test with curl or even better your favorite browser
 
+  To Bundle And Migrate before starting the Rails Application:
+
+        $ docker run --rm -p 127.0.0.1:8181:80 -d -v /path/to/ruby_on_rails_app:/webapp -e "bundle=true" -e "migrate=true" ${IMAGE_NAME}
 
 ## Boot Script
 
@@ -30,6 +32,10 @@ If available the script `init.sh` under the root directory of the web applicatio
 
 **Important:** Assure that the script is idempotent. That means if executed multiple times it does not change the result. Also keep in mind that the script is executed on each boot and before the web server nginx is started.
 
+For more information see https://index.docker.io/u/imightbeinatree/webapp/ and
+the source code under https://github.com/imightbeinatree/docker-webapp
+
+Forked From: 
+
 For more information see https://index.docker.io/u/networld/docker-webapp/ and
 the source code under https://github.com/networld-to/docker-webapp
-
