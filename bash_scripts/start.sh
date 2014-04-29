@@ -1,13 +1,13 @@
 #!/bin/bash
 if [[ "$bundle" -eq "true" ]]; then
   echo "=> Bundle Install! - cd /webapp && bundle install"
-  cd /webapp && bundle install
+  cd /webapp && /usr/local/rvm/gems/ruby-2.1.1/bin/bundle install
   echo "=> Done!"
 fi
 
 if [[ "$migrate" -eq "true" ]]; then
   echo "=> Database Migrate! - cd /webapp && rake db:migrate"
-  cd /webapp && rake db:migrate
+  cd /webapp && /usr/local/rvm/gems/ruby-2.1.1/bin/rake db:migrate
   echo "=> Done!"
 fi
 
