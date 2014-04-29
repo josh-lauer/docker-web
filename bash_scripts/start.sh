@@ -1,3 +1,6 @@
+ln -s `which ruby_executable_hooks` /usr/bin/ruby_executable_hooks
+ln -s `which ruby` /usr/bin/ruby
+
 #!/bin/bash
 if [ "$bundle" == "true" ]; then
   echo "=> Bundle Install! - cd /webapp &&  /usr/local/rvm/gems/ruby-2.1.1/bin/bundle install"
