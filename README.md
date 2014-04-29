@@ -12,7 +12,7 @@ Get the image via index.docker.io
 
         $ docker pull networld/docker-webapp
 
-        or build from source
+  or build from source
 
         $ IMAGE_NAME=networld/docker-webapp
         $ docker build --rm -t ${IMAGE_NAME} .
