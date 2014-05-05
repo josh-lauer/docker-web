@@ -13,14 +13,14 @@
 #
 # Component:    docker-webapp
 # 
-# MAINTAINER Michael Orr <michael@cloudspace.com>
+# MAINTAINER Josh Lauer <josh@cloudspace.com>
 # Based on work from:
 # Alex Oberhauser <alex.oberhauser@networld.to>
 # Copyright:    (c) 2013-2014 Sigimera Ltd. All rights reserved.
 #################################################################
 # 12.04 LTS version
-FROM imightbeinatree/sshable
-MAINTAINER Michael Orr <michael@cloudspace.com>
+FROM jlauer/sshable
+MAINTAINER Josh Lauer <josh@cloudspace.com>
 
 # reduce output from debconf
 ENV DEBIAN_FRONTEND noninteractive
@@ -58,5 +58,4 @@ ADD config_files/supervisord-nginx.conf /etc/supervisor/conf.d/supervisord-nginx
 
 EXPOSE 80
 CMD []
-ENTRYPOINT ["/start.sh"]
-
+# ENTRYPOINT ["/bin/bash /start.sh"]
